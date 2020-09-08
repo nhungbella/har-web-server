@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<span class="mess-error">Hello, {{request.user}}</span>
+<br>
+<span><a href="{% url 'logout' %}">LogOut</a></span>  
+<head>
+  <title>Heritage at Risk</title>
+  <link href="{% static 'css/connection.css' %}" rel="stylesheet" />
+  <script src="{% static 'js/connection.js' %}"></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+
+<body>
+  <div class="body-connect">
+    <div class="connect-img">
+      <img src="{% static '../static/images/logo.svg' %}" 
+        height="150" width="150" 
+      />
+    </div>
+    <div>
+      <p class="connect-create">
+        Edit the information about this Heritage at Risk report:
+      </p>
+      <form action="" method="post">
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="form-report-field">{{field}}</div>
+        {% endfor %}
+        <input type="submit" value="Update">
+      </form>
+      {% for message in messages %}
+        <p>{{message}}</p>
+      {% endfor %}
+
+    </div>  
+  </div>
+</body>
+
+</html>

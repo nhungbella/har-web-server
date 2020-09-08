@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<span class="mess-error">Hello, {{request.user}}</span>
+<br>
+<span><a href="{% url 'logout' %}">LogOut</a></span>  
+<head>
+  <title>Heritage at Risk</title>
+  <link href="{% static 'css/connection.css' %}" rel="stylesheet" />
+  <script src="{% static 'js/connection.js' %}"></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+
+<body>
+  <div class="body-connect">
+    <div class="connect-img">
+      <img src="{% static '../static/images/logo.svg' %}" 
+        height="150" width="150" 
+      />
+    </div>
+    <form action="" method="post">
+    {% csrf_token %}    
+    {% for field in form %}        
+        <div class="form-reports-container">
+            <img src="{% static '../static/images/icon.svg' %}" 
+            height="32" width="32" 
+            />
+            <div class="text-container">
+                <div class="form-reports-items">{{field}}</div>
+                <div class="form-reports-items">
+                  ({{field.latitude}}, 
+                  {{field.longitude}}, 
+                  {{field.altitude}})
+                </div>
+            </div>            
+            <a href="{% url 'update' field.id %}">
+              <i class="fa fa-pencil-alt icon-reports"></i>
+            </a>
+            <a href="{% url 'delete' field.id %}">
+              <i class="fa fa-trash icon-reports"></i>
+            </a>
+        </div>
+    {% endfor %}
+    <input type="submit" value="Add Report">
+    </form>
+    {% for message in messages %}
+    <p>{{message}}</p>
+    {% endfor %}
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+# check version
+django.get_version() 
+
+# create project 
+django-admin startproject project_name
+
+# Run server
+python3 manage.py runserver
+- change port 
+python3 manage.py runserver 8080
+- chenge port and IP
+python3 manage.py runserver 0.0.0.0:8000
+
+# access the administration:
+=> /admin
+
+# generate the initial Django's database:
+python3 manage.py migrate
+
+# create an Django administrator account:
+python3 manage.py createsuperuser
+
+# changepassword
+python manage.py changepassword 
+
+# Create a Django Web application (should cung dir with manage.py)
+python3 manage.py startapp report [directory]
+
+# check error
+python3 manage.py check
+
+# create migrations File
+1. create change in models.py
+2. run: python3 manage.py makemigrations  to create migration 
+3. update database : python3 manage.py migrate
+
+# CSDL
+1. sqlite3 db.sqlite3 > go DB
+- .headers ON
+- .mode column
+- .tables
+- pragma table_info('report')
+- .schema report
+
+................................................
+manage.py: một CLI giúp bạn tương tác nhanh với Django
+Folder mysite bên trong thực chất là một Python package, và tên của nó sẽ là tên package 
+    bạn dùng để import trong code. VD: import mysite.urls
+mysite/__init__.py: File rỗng, có mục đích biến folder này thành một Python package
+mysite/settings.py: Các settings của project ở trong này.
+mysite/urls.py: Định nghĩa các URL của trang web.
+mysite/wsgi.py: Dùng khi deploy project của bạn.
+
+
+- Một app sẽ chỉ thực hiện một chức năng nhất định.
+- Và một Project sẽ chứa các app đó, tạo thành một website. 
+- Và một app cũng có thể dùng trong nhiều Project khác nhau.
+
+fontawesome5_icons_editors

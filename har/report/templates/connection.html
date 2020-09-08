@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Heritage at Risk</title>
+  <link href="{% static 'css/connection.css' %}" rel="stylesheet" />
+  <script src="{% static 'js/connection.js' %}"></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+
+<body>
+  <div class="body-connect">
+    <div class="connect-img">
+      <img src="{% static '../static/images/logo.svg' %}" height="150" width="150" />
+    </div>
+
+    <div class="login-infomation">
+      <p class="connect-create">(Don't have an account? We are creating one for you)</p>
+
+      {% for message in messages %}
+        <p class="mess-error">{{message}}</p>
+      {% endfor %}
+
+      <form action="" method="post" class="form-group">
+        {% csrf_token %}
+        {{form.username}}        
+        <div class="form-password">
+            {{form.password1}}
+            <i class="fa fa-eye-slash icon"></i>
+        </div>
+        <p class="forgot-password">Forgot password?</p>
+        <input type="submit" value="Connect">
+      </form>
+    </div>  
+  </div>
+</body>
+
+</html>
